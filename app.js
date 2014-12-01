@@ -1,49 +1,57 @@
 angular.module('app', [])
 .controller('ListController', function($scope){
-	$scope.tab = -1,
-	$scope.changeTab = function(index) {
-		$scope.tab = index;
-	},
+	$scope.newItem = '';
+	$scope.addItem = function(newItem, listId) {
+		$scope.lists[listId].items.push(newItem);
+	};
+	$scope.removeItem = function(index, listId){
+		$scope.lists[listId].items.splice(index, 1);
+	};
+	$scope.listId = -1;
+	$scope.friendId = -1;
+	$scope.changeId = function(newId, id) {
+		$scope[id] = newId;
+	};
 	$scope.lists = [
 		{
-			id: 1,
+			id: 0,
 			name: 'Climbing',
 			items: ['harness', 'climbing shoes']
 		},
 		{
-			id: 2,
+			id: 1,
 			name: "Camping",
 			items: ['sleeping bag', 'tarp']
 		},
 		{
-			id: 3,
+			id: 2,
 			name: "Ice Climbing",
 			items: ['crampons', 'helmet']
 		}
-	],
+	];
 	$scope.users = [
 	{
-		id: 1,
+		id: 0,
 		name: 'Jonathan Ng',
+		listIds: [0, 1],
+		personalizedLists: [],
+		friends: [1]
+	},
+	{
+		id: 1,
+		name: 'John Doe',
 		listIds: [1, 2],
 		personalizedLists: [],
-		friends: ['John Doe']
+		friends: [0, 2]
 	},
 	{
 		id: 2,
-		name: 'John Doe',
-		listIds: [2, 3],
-		personalizedLists: [],
-		friends: ['Jonathan Ng', 'Jane Doe']
-	},
-	{
-		id: 3,
 		name: 'Jane Doe',
-		listIds: [3],
+		listIds: [2],
 		personalizedLists: [],
-		friends: ['John Doe']
+		friends: [1]
 	}
-	]
+	];
 });
 
 

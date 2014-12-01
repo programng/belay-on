@@ -3,46 +3,91 @@
 	<head>
 		<meta charset ="UTF-8">
 		<title>Belay On</title>
-		<link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css" />
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body ng-controller="ListController">
-		<h1 id="title">TITLE</h1>
-
-		<div class="user">Logged in as {{ users[1].name }}
+		<div>
+			<h1 class="title">Belay On</h1>
 		</div>
 
-		<div class="friends">Friends:
-			<div ng-repeat="friend in users[1].friends">
-				<p><a href ng-click="changeTab($index)">{{ friend }}</a></p>
+		<div class="profile-card">
+			<div class="profile-card-user">
+		    	Adventurer: {{ users[1].name }}
+			</div>
+			<div class="profile-card-friends">
+				LIST OF FRIENDS
+			</div>
+			<div class="profile-card-lists">
+				USER'S LISTS
 			</div>
 		</div>
 
 
+
 		<!-- list of lists to click on -->
 		<div class="lists">
-			LISTS
+			<p>
+				LISTS
+			</p>
 			<ul>
 				<li ng-repeat="list in lists">
-					<p><a href ng-click="changeTab($index)">{{ list.name }}</a></p>
+					<p><a href ng-click="changeId(list.id, 'listId')">{{ list.name }}</a></p>
 				</li>
 			</ul>
 		</div>
 
-		<div class="list" ng-show="tab===-1"> default thing to show</div>
+<!-- 		{{ listId }} -->
+
+		<!-- <div class="list" ng-show="listId===-1"> default thing to show</div> -->
 
 		<!-- info that shows up for each list when clicked in the menu above -->
-		<div class="list" ng-repeat="list in lists" ng-show="tab===$index">
+		<div class="list" ng-repeat="list in lists" ng-show="listId===list.id">
 			<p>
 				{{ list.name.toUpperCase() }}
 			</p>
 			<ul>
 				<li ng-repeat="item in list.items">
-					{{ item }}
+					{{ item }} <button ng-click='removeItem($index, list.id)'>X</button>
+				</li>
+			</ul>
+			<form name='new item' ng-submit='addItem(newItem, list.id); newItem=""'>
+			  <input type='text'ng-model='newItem'>
+			  <button>Add</button>
+			</form>
+		</div>
+		
+
+
+		<!-- list of friends to click on -->
+		<div class="friends">
+			<p>
+				FRIENDS
+			</p>
+			<ul>
+				<div ng-repeat="friend in users[1].friends">
+					<p><a href ng-click="changeId(friend, 'friendId')">{{ users[friend].name }}</a></p>
+				</div>
+			</ul>
+		</div>
+
+<!-- 		<p>
+			{{ friendId }}
+		</p> -->
+		
+		<!-- info that shows up for each friend when clicked in the menu above -->
+		<div class="friendLists" ng-repeat="friend in users[1].friends" ng-show="friendId===friend">
+			<p>
+				{{ users[friend].name.toUpperCase() }}
+			</p>
+			<ul>
+				<li ng-repeat="list in users[friend].listIds">
+					{{ lists[list].name }}
 				</li>
 			</ul>
 		</div>
-		
+
+
+
 
 		<script type="text/javascript" src="angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>

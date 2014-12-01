@@ -1,15 +1,26 @@
-.lists {
-	background-color: lightblue
+body {
+	font-family: Impact;
+}
+
+.title {
+	text-align: center;
+	background-color: black;
+	color: white;
 }
 
 .user {
-	background-color: lightyellow
+	text-align: center;
+	background-color: lightyellow;
+}
+
+.lists {
+	background-color: lightblue;
 }
 
 .friends {
-	background-color: lightgreen
+	background-color: lightgreen;
 }
 
 .list {
-	background-color: lightgray
+	background-color: lightgray;
 }
