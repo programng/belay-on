@@ -2,32 +2,48 @@
 <html lang="en" ng-app="app">
 	<head>
 		<meta charset ="UTF-8">
-		<title>Drink Salt Lake</title>
+		<title>Belay On</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css" />
-		<!-- <link rel="stylesheet" href="style.css"> -->
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body ng-controller="ListController">
 		<h1 id="title">TITLE</h1>
 
-
-
-		<!-- list of bars to click on -->
-		<div ng-repeat="list in lists">
-			<p><a href ng-click="changeTab($index)">{{ list.name }}</a></p>
+		<div class="user">Logged in as {{ users[1].name }}
 		</div>
 
-		<div ng-show="tab===-1"> default thing to show</div>
+		<div class="friends">Friends:
+			<div ng-repeat="friend in users[1].friends">
+				<p><a href ng-click="changeTab($index)">{{ friend }}</a></p>
+			</div>
+		</div>
 
-		<!-- info that shows up for each bar when clicked in the menu above -->
-		<div ng-repeat="list in lists" ng-show="tab===$index">
+
+		<!-- list of lists to click on -->
+		<div class="lists">
+			LISTS
+			<ul>
+				<li ng-repeat="list in lists">
+					<p><a href ng-click="changeTab($index)">{{ list.name }}</a></p>
+				</li>
+			</ul>
+		</div>
+
+		<div class="list" ng-show="tab===-1"> default thing to show</div>
+
+		<!-- info that shows up for each list when clicked in the menu above -->
+		<div class="list" ng-repeat="list in lists" ng-show="tab===$index">
 			<p>
-				{{ list.name }}
+				{{ list.name.toUpperCase() }}
 			</p>
-			<p ng-repeat="item in list.items">
-				{{ item }}
-			</p>
+			<ul>
+				<li ng-repeat="item in list.items">
+					{{ item }}
+				</li>
+			</ul>
 		</div>
 		
+
 		<script type="text/javascript" src="angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
 	</body>
