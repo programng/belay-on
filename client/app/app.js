@@ -1,4 +1,14 @@
-angular.module('app', [])
+angular.module('app', ['app.list', 'ngRoute'])
+.config(function($routeProvider, $httpProvider) {
+  $routeProvider
+    .when('/allLists', {
+      templateUrl: 'app/allLists/allLists.html',
+      controller: 'ListController'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+})
 .controller('ListController', function($scope){
 	$scope.newItem = '';
 	$scope.addItem = function(newItem, listId) {
