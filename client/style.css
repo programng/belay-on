@@ -8,10 +8,10 @@ body {
 	color: white;
 }
 
-.user {
-	text-align: center;
-	background-color: lightyellow;
+.profile-card {
+	background-color: lightblue;
 }
+
 
 .lists {
 	background-color: lightblue;
