@@ -1,5 +1,5 @@
 angular.module('list', [])
-.controller('ListController', function($scope){
+.controller('ListController', function($scope, listFactory){
   $scope.id = 3;
   $scope.tempList = {
     id: 0,
@@ -57,44 +57,47 @@ angular.module('list', [])
       console.log($scope.users[userId].listIds)
     }
   };
-  $scope.lists = [
-    {
-      id: 0,
-      name: 'Climbing',
-      items: ['harness', 'climbing shoes']
-    },
-    {
-      id: 1,
-      name: "Camping",
-      items: ['sleeping bag', 'tarp']
-    },
-    {
-      id: 2,
-      name: "Ice Climbing",
-      items: ['crampons', 'helmet']
-    }
-  ];
-  $scope.users = [
-  {
-    id: 0,
-    name: 'Jonathan Ng',
-    listIds: [0, 1],
-    personalizedLists: [],
-    friends: [1]
-  },
-  {
-    id: 1,
-    name: 'John Doe',
-    listIds: [0, 1],
-    personalizedLists: [],
-    friends: [0, 2]
-  },
-  {
-    id: 2,
-    name: 'Jane Doe',
-    listIds: [2],
-    personalizedLists: [],
-    friends: [1]
-  }
-  ];
+
+  $scope.lists = listFactory.lists;
+  $scope.users = listFactory.users;
+  // $scope.lists = [
+  //   {
+  //     id: 0,
+  //     name: 'Climbing',
+  //     items: ['harness', 'climbing shoes']
+  //   },
+  //   {
+  //     id: 1,
+  //     name: "Camping",
+  //     items: ['sleeping bag', 'tarp']
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Ice Climbing",
+  //     items: ['crampons', 'helmet']
+  //   }
+  // ];
+  // $scope.users = [
+  // {
+  //   id: 0,
+  //   name: 'Jonathan Ng',
+  //   listIds: [0, 1],
+  //   personalizedLists: [],
+  //   friends: [1]
+  // },
+  // {
+  //   id: 1,
+  //   name: 'John Doe',
+  //   listIds: [0, 1],
+  //   personalizedLists: [],
+  //   friends: [0, 2]
+  // },
+  // {
+  //   id: 2,
+  //   name: 'Jane Doe',
+  //   listIds: [2],
+  //   personalizedLists: [],
+  //   friends: [1]
+  // }
+  // ];
 });

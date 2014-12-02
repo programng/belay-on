@@ -9,6 +9,53 @@ angular.module('app', ['list', 'ui.router'])
       url: '/allLists'
     })
 })
+.factory('listFactory', function(){
+	var lists = [
+	  {
+	    id: 0,
+	    name: 'Climbing',
+	    items: ['harness', 'climbing shoes']
+	  },
+	  {
+	    id: 1,
+	    name: "Camping",
+	    items: ['sleeping bag', 'tarp']
+	  },
+	  {
+	    id: 2,
+	    name: "Ice Climbing",
+	    items: ['crampons', 'helmet']
+	  }
+	];
+	var users = [
+	{
+	  id: 0,
+	  name: 'John Doe',
+	  listIds: [0, 1],
+	  personalizedLists: [],
+	  friends: [1]
+	},
+	{
+	  id: 1,
+	  name: 'Jonathan Ng',
+	  listIds: [0, 1],
+	  personalizedLists: [],
+	  friends: [0, 2]
+	},
+	{
+	  id: 2,
+	  name: 'Jane Doe',
+	  listIds: [2],
+	  personalizedLists: [],
+	  friends: [1]
+	}
+	];
+
+	return {
+		lists: lists,
+		users: users
+	}
+})
 
 // .config(function($routeProvider, $httpProvider) {
 //   $routeProvider
