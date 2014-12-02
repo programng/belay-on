@@ -4,8 +4,7 @@ var app = express();
 var port = 3000;
 var ip = "127.0.0.1";
 
-var cors = require('cors');
-
-app.use(cors());
+app.use(express.static(__dirname + '/../client'));
 
 var server = app.listen(port, ip);
+

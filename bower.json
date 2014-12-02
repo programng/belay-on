@@ -1,0 +1,19 @@
+{
+  "name": "belay-on",
+  "version": "0.0.0",
+  "homepage": "https://github.com/programng/belay-on",
+  "authors": [
+    "Jonathan Ng <jon7ng@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.4"
+  }
+}

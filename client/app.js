@@ -1,35 +1,4 @@
-angular.module('app', [
-	'ngRoute'])
-// .config(function($routeProvider, $httpProvider) {
-//   $routeProvider
-//     .when('/signin', {
-//       templateUrl: 'app/auth/signin.html',
-//       controller: 'AuthController'
-//     })
-//     .when('/signup', {
-//       templateUrl: 'app/auth/signup.html',
-//       controller: 'AuthController'
-//     })
-//     .when('/links', {
-//       templateUrl: 'app/links/links.html',
-//       controller: 'LinksController'
-//     })
-//     .when('/shorten', {
-//       templateUrl: 'app/shorten/shorten.html',
-//       controller: 'ShortenController'
-//     })
-//     .when('/1cf66', {
-//       redirectTo: function(params){
-//         console.log(params);
-//       }
-//       function(){
-//         $window.location.href('http://www.hackreactor.com')
-//       }
-//     })
-//     .otherwise({
-//       redirectTo: '/'
-//     });
-// })
+angular.module('app', [])
 .controller('ListController', function($scope){
 	$scope.newItem = '';
 	$scope.addItem = function(newItem, listId) {
