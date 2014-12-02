@@ -1,3 +1,11 @@
+html { 
+  background: url(zion.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
 	font-family: Impact;
 }
@@ -13,28 +21,28 @@ body {
 }
 
 .new-list-box {
-	position: float;
+	position: absolute;
 	bottom: 0;
 	right: 0;
-	background-color: lightgreen;
+	background-color: white;
 }
 
 .profile-card {
 	float: left;
-	background-color: lightblue;
+	background-color: white;
 }
 
 
 .lists {
-	background-color: lightblue;
+	background-color: white;
 }
 
-.friends {
+.friendLists {
 	float: left;
-	background-color: lightgreen;
+	background-color: white;
 }
 
 .list {
 	float: left;
-	background-color: lightgray;
+	background-color: white;
 }
