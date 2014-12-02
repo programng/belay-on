@@ -10,75 +10,98 @@
 			<h1 class="title">Belay On</h1>
 		</div>
 
-		<div class="profile-card">
-			<div class="profile-card-user">
-		    	Adventurer: {{ users[1].name }}
+		<div class='wrapper'>
+			<div class="profile-card">
+				<div class="profile-card-user">
+			    	Adventurer: {{ users[1].name }}
+				</div>
+				<div class="profile-card-friends">
+					<p>
+						FRIENDS
+					</p>
+					<ul>
+						<div ng-repeat="friend in users[1].friends">
+							<p><a href ng-click="changeId(friend, 'friendId')">{{ users[friend].name }}</a></p>
+						</div>
+					</ul>
+				</div>
+				<div class="profile-card-lists">
+					<p>
+						USER'S LISTS
+					</p>
+					<ul>
+						<li ng-repeat="list in users[1].listIds">
+							<p><a href ng-click="changeId(list, 'listId')">{{ lists[list].name }}</a></p>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="profile-card-friends">
+
+
+			<!-- info that shows up for each list when clicked in the menu above -->
+			<div class="list" ng-repeat="list in lists" ng-show="listId===list.id">
 				<p>
-					FRIENDS
+					{{ list.name.toUpperCase() }}
 				</p>
 				<ul>
-					<div ng-repeat="friend in users[1].friends">
-						<p><a href ng-click="changeId(friend, 'friendId')">{{ users[friend].name }}</a></p>
-					</div>
+					<li ng-repeat="item in list.items">
+						{{ item }} <button ng-click='removeItem($index, list.id)'>X</button>
+					</li>
 				</ul>
+				<form name='new item' ng-submit='addItem(newItem, list.id); newItem=""'>
+					<input type='text'ng-model='newItem'>
+					<button>Add</button>
+				</form>
+				<a href="mailto:?subject={{list.name}}&body={{list.items.join(', ')}}">Email List</a> 
 			</div>
-			<div class="profile-card-lists">
+
+
+			<!-- info that shows up for each friend when clicked in the menu above -->
+			<div class="friendLists" ng-repeat="friend in users[1].friends" ng-show="friendId===friend">
 				<p>
-					USER'S LISTS
+					{{ users[friend].name.toUpperCase() }}
 				</p>
 				<ul>
-					<li ng-repeat="list in users[1].listIds">
-						<p><a href ng-click="changeId(list, 'listId')">{{ lists[list].name }}</a></p>
+					<li ng-repeat="list in users[friend].listIds">
+						{{ lists[list].name }}
 					</li>
 				</ul>
 			</div>
+
 		</div>
 
 
-		<!-- info that shows up for each list when clicked in the menu above -->
-		<div class="list" ng-repeat="list in lists" ng-show="listId===list.id">
-			<p>
-				{{ list.name.toUpperCase() }}
-			</p>
-			<ul>
-				<li ng-repeat="item in list.items">
-					{{ item }} <button ng-click='removeItem($index, list.id)'>X</button>
-				</li>
-			</ul>
-			<form name='new item' ng-submit='addItem(newItem, list.id); newItem=""'>
-			  <input type='text'ng-model='newItem'>
-			  <button>Add</button>
+		<div ui-view></div>
+
+		<div class='new-list-box'>New List
+			<form name='new list' ng-submit='addNameToNewList(newList); newList=""'>
+				List Name:
+				{{ tempList.name.toUpperCase() }}
+				<input type="text" ng-model="newList">
+				<button>Submit</button>
 			</form>
-			<a href="mailto:?subject={{list.name}}&body={{list.items.join(', ')}}">Email List</a> 
+
+			<form name='new item' ng-submit='addItemToTemp(newTempItem); newTempItem=""'>
+				List Items:
+					<ul>
+						<li ng-repeat="item in tempList.items">
+							{{ item }} <button ng-click='removeItemFromTemp($index)'>X</button>
+						</li>
+					</ul>
+				<input type="text" ng-model="newTempItem">
+				<button>Add</button>
+			</form>
+
+			<div><a href ng-click='addToLists(tempList)'>CREATE THIS LIST!!</a></div>
+
 		</div>
-
-
-
-		<!-- info that shows up for each friend when clicked in the menu above -->
-		<div class="friendLists" ng-repeat="friend in users[1].friends" ng-show="friendId===friend">
-			<p>
-				{{ users[friend].name.toUpperCase() }}
-			</p>
-			<ul>
-				<li ng-repeat="list in users[friend].listIds">
-					{{ lists[list].name }}
-				</li>
-			</ul>
-		</div>
-
-
-
-		<div ng-view></div>
-
-
 
 
 
 		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 
-		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<!-- <script src="bower_components/angular-route/angular-route.js"></script> -->
 
 		<script type="text/javascript" src="app/app.js"></script>
 		<script src="app/allLists/allLists.js"></script>

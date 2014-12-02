@@ -2,13 +2,25 @@ body {
 	font-family: Impact;
 }
 
+.wrapper {
+	overflow: hidden;
+}
+
 .title {
 	text-align: center;
 	background-color: black;
 	color: white;
 }
 
+.new-list-box {
+	position: float;
+	bottom: 0;
+	right: 0;
+	background-color: lightgreen;
+}
+
 .profile-card {
+	float: left;
 	background-color: lightblue;
 }
 
@@ -18,9 +30,11 @@ body {
 }
 
 .friends {
+	float: left;
 	background-color: lightgreen;
 }
 
 .list {
+	float: left;
 	background-color: lightgray;
 }

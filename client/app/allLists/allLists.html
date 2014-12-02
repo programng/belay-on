@@ -3,9 +3,12 @@
   <p>
     ALL LISTS
   </p>
+  {{lists}}
   <ul>
     <li ng-repeat="list in lists">
-      <p><a href ng-click="changeId(list.id, 'listId')">{{ list.name }}</a></p>
+      <p><a href ng-click="changeId(list.id, 'listId')">{{ list.name }}</a>
+        <button ng-click='addToUsersLists(1, list.id)'>Add to My Lists</button>
+      </p>
     </li>
   </ul>
 </div>
@@ -17,13 +20,16 @@
   </p>
   <ul>
     <li ng-repeat="item in list.items">
-      {{ item }} <button ng-click='removeItem($index, list.id)'>X</button>
+      {{ item }} 
+      <!-- <button ng-click='removeItem($index, list.id)'>X</button> -->
     </li>
   </ul>
-  <form name='new item' ng-submit='addItem(newItem, list.id); newItem=""'>
+  
+<!--   <form name='new item' ng-submit='addItem(newItem, list.id); newItem=""'>
     <input type='text'ng-model='newItem'>
     <button>Add</button>
-  </form>
+  </form> -->
+
   <a href="mailto:?subject={{list.name}}&body={{list.items.join(', ')}}">Email List</a> 
 
 </div>
