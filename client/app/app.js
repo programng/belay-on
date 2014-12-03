@@ -34,7 +34,7 @@ angular.module('app', ['list', 'ui.router'])
 	  listIds: [0, 1],
 	  personalizedLists: [],
 	  friends: [1],
-	  img: 'jonpic.jpg'
+	  img: 'john.png'
 	},
 	{
 	  id: 1,
@@ -50,7 +50,7 @@ angular.module('app', ['list', 'ui.router'])
 	  listIds: [2],
 	  personalizedLists: [],
 	  friends: [1],
-	  img: 'jonpic.jpg'
+	  img: 'jane.png'
 	}
 	];
 

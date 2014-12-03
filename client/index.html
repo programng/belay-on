@@ -2,12 +2,12 @@
 <html lang="en" ng-app="app">
 	<head>
 		<meta charset ="UTF-8">
-		<title>Belay On</title>
+		<title>BELAY ON</title>
 		<link rel="stylesheet" href="styles/style.css">
 	</head>
 	<body ng-controller="ListController">
 		<div>
-			<h1 class="title">Belay On</h1>
+			<h1 class="title">BELAY ON</h1>
 		</div>
 
 		<div class='wrapper'>
@@ -72,6 +72,9 @@
 				<p>
 					{{ users[friend].name.toUpperCase() }}
 				</p>
+				<div>
+					<img src='{{users[friend].img}}' height="200" width="200" border='3'>
+				</div>
 				<ul>
 					<li ng-repeat="list in users[friend].listIds">
 						{{ lists[list].name }}
