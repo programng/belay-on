@@ -1,0 +1,13 @@
+<div class="lists">
+  <p>
+    ALL LISTS
+  </p>
+  <!-- {{lists}} -->
+  <ul>
+    <li ng-repeat="list in lists">
+      <p><a href ng-click="changeId(list.id, 'listId')">{{ list.name }}</a>
+        <button ng-click='addToUsersLists(1, list.id)'>Add to My Lists</button>
+      </p>
+    </li>
+  </ul>
+</div>

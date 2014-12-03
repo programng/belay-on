@@ -27,14 +27,6 @@ body {
 	/*text-shadow: -10px 0 black, 0 10px black, 10px 0 black, 0 -10px black;*/
 }
 
-.new-list-box {
-	border: 2px solid black;
-	padding: 10px 10px 10px 10px;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	background-color: white;
-}
 
 .profile-card {
 	border: 2px solid black;
@@ -54,13 +46,51 @@ body {
 }
 
 .friendLists {
+	border: 2px solid black;
+	padding: 10px 10px 10px 10px;
 	margin-left: 100px;
 	float: left;
 	background-color: white;
+	width: 150px;
+	height: 400px;
 }
 
 .list {
+	border: 2px solid black;
+	padding: 10px 10px 10px 10px;
 	margin-left: 100px;
 	float: left;
 	background-color: white;
+	width: 250px;
+	height: 400px;
+}
+
+.allList-list {
+	border: 2px solid black;
+	padding: 10px 10px 10px 10px;
+	margin-top: 30px;
+	float: left;
+	background-color: white;
+	width: 150px;
+	height: 400px;
+}
+
+.view {
+	float: left;
+	margin-left: 100px;
+}
+
+.new-list-click-tab {
+	border: 2px solid black;
+	margin: 0px;
+}
+
+.new-list-box-wrapper {
+	border: 2px solid black;
+	padding: 10px 10px 10px 10px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: white;
+	width: 400px;
 }

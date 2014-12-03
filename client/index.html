@@ -16,7 +16,7 @@
 			    	Adventurer: {{ users[1].name.toUpperCase() }}
 				</div>
 				<div>
-					<img src='jonpic.jpg' height="200" width="200" border='3'>
+					<img src='{{users[1].img}}' height="200" width="200" border='3'>
 				</div>
 				<div class="profile-card-friends">
 					<p>
@@ -42,12 +42,17 @@
 
 
 			<!-- info that shows up for each list when clicked in the menu above -->
+			<div class="list" ng-show="listId===-1">
+				LIST
+			</div>
+
 			<div class="list" ng-repeat="list in lists" ng-show="listId===list.id">
 				<p>
 					{{ list.name.toUpperCase() }}
 				</p>
 				<ul>
 					<li ng-repeat="item in list.items">
+						<input type="checkbox">
 						{{ item }} <button ng-click='removeItem($index, list.id)'>X</button>
 					</li>
 				</ul>
@@ -60,6 +65,9 @@
 
 
 			<!-- info that shows up for each friend when clicked in the menu above -->
+			<div class="friendLists" ng-show="friendId===-1">
+				FRIEND
+			</div>
 			<div class="friendLists" ng-repeat="friend in users[1].friends" ng-show="friendId===friend">
 				<p>
 					{{ users[friend].name.toUpperCase() }}
@@ -71,32 +79,36 @@
 				</ul>
 			</div>
 
+		<div class='view' ui-view></div>
 		</div>
 
 
-		<div ui-view></div>
+		<div class='new-list-box-wrapper'>
+			<div class='new-list-click-tab' ng-click='show=!show'>
+				MAKE A NEW LIST
+			</div>
+			<div class='new-list-box' ng-show='show'>
+				<form name='new list' ng-submit='addNameToNewList(newList); newList=""'>
+					List Name:
+					{{ tempList.name.toUpperCase() }}
+					<input type="text" ng-model="newList">
+					<button>Submit</button>
+				</form>
 
-		<div class='new-list-box'>New List
-			<form name='new list' ng-submit='addNameToNewList(newList); newList=""'>
-				List Name:
-				{{ tempList.name.toUpperCase() }}
-				<input type="text" ng-model="newList">
-				<button>Submit</button>
-			</form>
+				<form name='new item' ng-submit='addItemToTemp(newTempItem); newTempItem=""'>
+					List Items:
+						<ul>
+							<li ng-repeat="item in tempList.items">
+								{{ item }} <button ng-click='removeItemFromTemp($index)'>X</button>
+							</li>
+						</ul>
+					<input type="text" ng-model="newTempItem">
+					<button>Add</button>
+				</form>
 
-			<form name='new item' ng-submit='addItemToTemp(newTempItem); newTempItem=""'>
-				List Items:
-					<ul>
-						<li ng-repeat="item in tempList.items">
-							{{ item }} <button ng-click='removeItemFromTemp($index)'>X</button>
-						</li>
-					</ul>
-				<input type="text" ng-model="newTempItem">
-				<button>Add</button>
-			</form>
+				<div><a href ng-click='addToLists(tempList); newTempItem=""; newList=""'>CREATE THIS LIST!!</a></div>
 
-			<div><a href ng-click='addToLists(tempList)'>CREATE THIS LIST!!</a></div>
-
+			</div>
 		</div>
 
 

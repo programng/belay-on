@@ -23,7 +23,11 @@ angular.module('list', [])
     $scope.tempList.id = $scope.id;
     $scope.lists.push($scope.tempList);
     $scope.id++;
-    console.log($scope.lists)
+    $scope.tempList = {
+      id: 0,
+      name: '',
+      items: []
+    }
   };
 
   $scope.newList = '';
@@ -60,6 +64,8 @@ angular.module('list', [])
 
   $scope.lists = listFactory.lists;
   $scope.users = listFactory.users;
+
+  $scope.show = listFactory.show;
   // $scope.lists = [
   //   {
   //     id: 0,
@@ -100,4 +106,13 @@ angular.module('list', [])
   //   friends: [1]
   // }
   // ];
-});
+})
+.directive('allLists', function() {
+  return {
+    restrict: 'EA',
+    templateUrl: 'app/allLists///allLists.directive.html',
+    // scope: {
+    //   : '='
+    // }
+  }
+})

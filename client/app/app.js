@@ -33,27 +33,32 @@ angular.module('app', ['list', 'ui.router'])
 	  name: 'John Doe',
 	  listIds: [0, 1],
 	  personalizedLists: [],
-	  friends: [1]
+	  friends: [1],
+	  img: 'jonpic.jpg'
 	},
 	{
 	  id: 1,
 	  name: 'Jonathan Ng',
 	  listIds: [0, 1],
 	  personalizedLists: [],
-	  friends: [0, 2]
+	  friends: [0, 2],
+	  img: 'jonpic.jpg'
 	},
 	{
 	  id: 2,
 	  name: 'Jane Doe',
 	  listIds: [2],
 	  personalizedLists: [],
-	  friends: [1]
+	  friends: [1],
+	  img: 'jonpic.jpg'
 	}
 	];
 
+	var show = false;
 	return {
 		lists: lists,
-		users: users
+		users: users,
+		show: show
 	}
 })
 
